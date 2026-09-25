@@ -1,1 +1,1 @@
-export const API_URL = "https://bbrm.vercel.app";
+export const API_URL = "https://bbrmbackend.vercel.app";
