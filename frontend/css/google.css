@@ -1,0 +1,839 @@
+@font-face {
+  font-display: swap;
+  font-family: "Google Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/google-sans-v70-latin-regular.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Google Sans";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../assets/fonts/google-sans-v70-latin-500.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Google Sans";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../assets/fonts/google-sans-v70-latin-600.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Google Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../assets/fonts/google-sans-v70-latin-700.woff2") format("woff2");
+}
+
+[data-theme="light"] {
+  /* Surfaces */
+  --color-bg-main: rgb(240, 244, 249);
+  --color-surface: rgb(255, 255, 255);
+  --color-surface-hover: rgb(237, 237, 237);
+  --color-footer-hover: rgb(227, 230, 235);
+
+  /* Text */
+  --color-text-primary: rgb(31, 31, 31);
+  --color-text-secondary: rgb(68, 71, 70);
+  --color-text-on-primary: rgb(255, 255, 255);
+
+  /* Brand / interactive */
+  --color-primary: rgb(11, 87, 208);
+  --color-primary-hover: rgb(0, 72, 188);
+
+  /* Error */
+  --color-error: rgb(179, 38, 30);
+
+  /* Borders */
+  --color-border: rgb(31, 31, 31);
+
+  /* Effects */
+  --color-focus-ring: rgb(11, 87, 208);
+  --color-primary-hover-overlay: rgb(11, 87, 208);
+  --color-loading-overlay: rgba(255, 255, 255, 0.65);
+
+  /* Loading spinner */
+  --color-spinner-track: rgba(0, 0, 0, 0.1);
+  --color-spinner-active: rgb(11, 87, 208);
+}
+
+[data-theme="dark"] {
+  /* Surfaces */
+  --color-bg-main: rgb(30, 31, 32);
+  --color-surface: rgb(14, 14, 14);
+  --color-surface-hover: rgb(31, 31, 31);
+  --color-footer-hover: rgb(43, 44, 45);
+
+  /* Text */
+  --color-text-primary: rgb(227, 227, 227);
+  --color-text-secondary: rgb(196, 199, 197);
+  --color-text-on-primary: rgb(6, 46, 111);
+
+  /* Brand / interactive */
+  --color-primary: rgb(168, 199, 250);
+  --color-primary-hover: rgb(182, 208, 251);
+
+  /* Error */
+  --color-error: rgb(242, 184, 181);
+
+  /* Borders */
+  --color-border: rgb(143, 145, 143);
+
+  /* Effects */
+  --color-focus-ring: rgb(168, 199, 250);
+  --color-primary-hover-overlay: rgb(168, 199, 250);
+  --color-loading-overlay: rgba(0, 0, 0, 0.45);
+
+  /* Loading spinner */
+  --color-spinner-track: rgba(0, 0, 0, 0.1);
+  --color-spinner-active: rgb(11, 87, 208);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Google Sans", "Roboto", "Noto Sans", sans-serif;
+  background-color: var(--color-surface);
+
+  @media (width >= calc(960 / 16 * 1rem)) {
+    background-color: var(--color-bg-main);
+  }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  @media (width >= 960px) {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (width >= 960px) and (width < 1240px) {
+    min-height: 100vh;
+    padding-inline: 0;
+  }
+
+  @media (width >= 1240px) and (width < 1600px) {
+    padding-inline: 200px;
+  }
+
+  @media (width >= 1600px) {
+    padding-inline: 0;
+  }
+}
+
+.signin-card {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 1.5rem;
+  background-color: var(--color-surface);
+
+  @media (width >= calc(840 / 16 * 1rem)) {
+    padding-inline: 2rem;
+  }
+
+  @media (width >= calc(960 / 16 * 1rem)) {
+    border-radius: calc(28 / 16 * 1rem);
+    padding: calc(36 / 16 * 1rem);
+  }
+
+  @media (width >= 960px) and (width < 1240px) {
+    max-width: 840px;
+    margin-inline: auto;
+  }
+
+  @media (width >= 1240px) and (width < 1600px) {
+    max-width: none;
+  }
+
+  @media (width >= 1600px) {
+    width: 1040px;
+    max-width: 1040px;
+    margin-inline: auto;
+  }
+}
+
+.signin-card.is-loading::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 3px;
+  background-color: var(--color-primary);
+  animation: loading-line 1.2s ease-in-out infinite;
+}
+
+@keyframes loading-line {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: var(--color-loading-overlay);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+}
+
+body.is-loading .loading-overlay {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.header-logo {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(4 / 16 * 1rem);
+}
+
+.header-logo img {
+  width: calc(40 / 16 * 1rem);
+  height: calc(40 / 16 * 1rem);
+}
+
+.signin-card__body {
+  margin-top: 1.5rem;
+
+  @media (width >= 606px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+}
+
+.signin-card__intro {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+
+  @media (width >= 606px) {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    margin-bottom: 0;
+    padding-right: 1.5rem;
+  }
+}
+
+.signin-card__title {
+  font-size: calc(32 / 16 * 1rem);
+  line-height: 44px;
+
+  @media (width >= 840px) {
+    font-size: calc(36 / 16 * 1rem);
+  }
+}
+
+.signin-card__description {
+  margin-top: 1rem;
+  line-height: 24px;
+}
+
+.signin-card__form {
+  @media (width >= 606px) {
+    grid-column: 2;
+    grid-row: 1;
+    padding-left: 1.5rem;
+  }
+}
+
+.signin-card__input {
+  position: relative;
+  padding-top: 0.5rem;
+}
+
+.signin-card__input input {
+  width: 100%;
+  margin: 1px;
+  margin-bottom: 0;
+  padding: 15px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--color-text-primary);
+  line-height: 20px;
+  background-color: transparent;
+}
+
+.signin-card__input input:focus {
+  border-width: 2px;
+  border-color: var(--color-focus-ring);
+  outline: none;
+}
+
+.signin-card__input input:not(:placeholder-shown) + label {
+  top: 0.5rem;
+  transform: translateY(-50%);
+  font-size: 13px;
+  padding-inline: 0.35rem;
+}
+
+.signin-card__input.has-error input {
+  border-color: var(--color-error);
+  outline: none;
+}
+
+.signin-card__input label.has-error {
+  color: var(--color-error);
+}
+
+.signin-card__input.has-error input:focus {
+  border-color: var(--color-error);
+  outline: none;
+}
+
+.signin-card__input label {
+  position: absolute;
+  left: 1rem;
+  top: calc(0.5rem + 50% - 3px);
+  transform: translateY(-50%);
+  color: var(--color-text-secondary);
+  background-color: var(--color-surface);
+  transition: all 0.2s ease;
+}
+
+.signin-card__input input:focus + label {
+  top: 0.5rem;
+  transform: translateY(-50%);
+  font-size: 13px;
+  color: var(--color-primary);
+  padding-inline: 0.35rem;
+}
+
+.forgot-wrapper {
+  padding-block: 9px 3px;
+}
+
+.signin-card__forgot {
+  position: relative;
+  display: inline-block;
+  border-radius: 4px;
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: none;
+  font-size: calc(14 / 16 * 1rem);
+  letter-spacing: 0.25px;
+}
+
+.signin-card__forgot::before {
+  content: "";
+  top: -4px;
+  bottom: -4px;
+  left: -10px;
+  right: -10px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  border-radius: 25px;
+  background-color: var(--color-primary-hover-overlay);
+}
+
+.signin-card__forgot:hover::before {
+  opacity: 0.05;
+}
+
+.signin-card__alternative {
+  margin-top: 2rem;
+  padding-block: 9px 3px;
+  color: var(--color-text-secondary);
+  font-size: calc(14 / 16 * 1rem);
+  line-height: 20px;
+
+  @media (width >= 606px) {
+    grid-column: 2;
+    grid-row: 2;
+    padding-left: 1.5rem;
+  }
+}
+
+.learn_more {
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.25px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.signin-card__footer {
+  margin-top: 2rem;
+
+  @media (width < 606px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  @media (width >= 606px) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2.5rem;
+  }
+}
+
+.signin-card__create-account {
+  position: relative;
+  font-size: calc(14 / 16 * 1rem);
+  line-height: 20px;
+  border: none;
+  background-color: transparent;
+  color: var(--color-primary);
+  font-family: inherit;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    left: -14px;
+    right: -14px;
+    border-radius: 25px;
+    background-color: var(--color-primary-hover-overlay);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &:hover::before {
+    opacity: 0.05;
+  }
+}
+
+.signin-card__submit {
+  padding: 0.78rem 1.55rem;
+  border-radius: 20px;
+  border: none;
+  color: var(--color-text-on-primary);
+  background-color: var(--color-primary);
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  margin-block: calc(6 / 16 * 1rem);
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+  }
+}
+
+.signin-footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: auto;
+  margin-bottom: 0.5rem;
+  background-color: var(--color-surface);
+
+  @media (width >= calc(840 / 16 * 1rem)) {
+    padding-inline: 1rem;
+  }
+
+  @media (width >= 960px) {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    background-color: transparent;
+    padding-inline: 0;
+  }
+
+  @media (width >= 960px) and (width < 1240px) {
+    max-width: 840px;
+    margin-inline: auto;
+  }
+
+  @media (width >= 1240px) and (width < 1600px) {
+    max-width: none;
+  }
+
+  @media (width >= 1600px) {
+    width: 1040px;
+    max-width: 1040px;
+    margin-inline: auto;
+  }
+}
+
+.signin-footer__language {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 8px 12px 8px 0px;
+  padding: calc(12 / 16 * 1rem) 1rem;
+  color: var(--color-text-secondary);
+  font-size: calc(12 / 16 * 1rem);
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
+  letter-spacing: 0.25px;
+  cursor: pointer;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: var(--color-footer-hover);
+  }
+}
+
+.signin-footer__language svg {
+  width: calc(8 / 16 * 1rem);
+  height: calc(4 / 16 * 1rem);
+}
+
+.signin-footer__links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.signin-footer__links a {
+  font-size: calc(12 / 16 * 1rem);
+  font-family: inherit;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  border-radius: 10px;
+  padding: calc(8 / 16 * 1rem) calc(12 / 16 * 1rem);
+
+  &:hover {
+    background-color: var(--color-footer-hover);
+  }
+}
+
+.signin-screen:not(.active) {
+  display: none;
+}
+
+.signin-card__error {
+  display: none;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 4px;
+  color: var(--color-error);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.signin-card__error svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.signin-card__input.has-error input {
+  border-color: var(--color-error);
+}
+
+.signin-card__input.has-error input:focus {
+  border-color: var(--color-error);
+}
+
+.signin-card__input.has-error input:focus + label {
+  color: var(--color-error);
+}
+
+.signin-card__input.has-error + .signin-card__error {
+  display: flex;
+}
+
+.signin-card__password-toggle {
+  margin-top: 8px;
+  padding: 4px;
+
+  @media (width < 606px) {
+    padding: 0;
+  }
+}
+
+.signin-card__password-toggle label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: fit-content;
+  color: var(--color-text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.signin-card__password-toggle input {
+  position: relative;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex-shrink: 0;
+  border: 2px solid var(--color-border);
+  border-radius: 2px;
+  background-color: var(--color-surface);
+  cursor: pointer;
+}
+
+.signin-card__checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+}
+
+.signin-card__checkbox::before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: var(--color-primary-hover-overlay);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.signin-card__checkbox:hover::before {
+  opacity: 0.05;
+}
+
+.signin-card__password-toggle input:checked {
+  border-color: var(--color-primary-hover-overlay);
+  background-color: var(--color-primary-hover-overlay);
+}
+
+.signin-card__password-toggle input::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 9px;
+  top: 2px;
+  left: 5px;
+  border: solid var(--color-text-on-primary);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+
+.signin-card__password-toggle input:checked::after {
+  opacity: 1;
+}
+
+.signin-card__input.password {
+  margin-top: 1.5rem;
+}
+
+.signin-screen--password .signin-card__footer {
+  margin-top: 3.5rem;
+}
+
+.signin-card__account-btn {
+  width: fit-content;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-inline: 0.5rem;
+  margin-top: 1rem;
+  background-color: var(--color-surface);
+  border-radius: 1rem;
+  font-family: inherit;
+  font-size: calc(14 / 16 * 1rem);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  padding-left: 3px;
+  cursor: pointer;
+
+  @media (width < 606px) {
+    margin-bottom: 2rem;
+  }
+
+  &:hover {
+    background-color: var(--color-surface-hover);
+  }
+}
+
+.Qk3oof {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.signin-card__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 80px;
+  height: 80px;
+  border: 8px solid var(--color-spinner-track);
+  border-top-color: var(--color-spinner-active);
+  border-radius: 50%;
+  animation: spin 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.loading-text {
+  margin-top: 20px;
+  color: var(--color-text-primary);
+  font-family: "Google Sans", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.loading-subtext {
+  color: var(--color-text-secondary);
+  font-family: "Google Sans", sans-serif;
+  font-size: 0.875rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.signin-card__yesPrompt {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-text-primary);
+  margin-top: 1rem;
+
+  @media (width >= 606px) {
+    padding-left: 1.5rem;
+  }
+}
+
+.signin-card__yesPrompt-number {
+  text-align: center;
+  font-size: calc(57 / 16 * 1rem);
+  margin-bottom: 1rem;
+}
+
+.signin-card__yesPrompt-text {
+  font-size: calc(20 / 16 * 1rem);
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.signin-card__yesPrompt-subtext {
+  margin-top: 0.625rem;
+  font-size: calc(14 / 16 * 1rem);
+  line-height: 20px;
+}
+
+.signin-screen--yes-prompt .signin-card__footer {
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@media (width >= 606px) {
+  .signin-screen--yes-prompt .signin-card__footer:first-of-type {
+    justify-content: flex-start;
+  }
+
+  .signin-screen--yes-prompt .signin-card__footer:last-of-type {
+    justify-content: flex-end;
+  }
+}
+
+.signin-screen--sms-code form {
+  margin-top: 2rem;
+}
+
+.signin-screen--sms-code .signin-card__footer,
+.signin-screen--success-screen .signin-card__footer{
+  margin-top: 4rem;
+}
+
+.signin-card__input--sms-code::before {
+  content: "G-";
+  position: absolute;
+  left: 1rem;
+  top: calc(50% + 6px);
+  transform: translateY(-50%);
+  color: var(--color-text-primary);
+  font-size: 14px;
+  line-height: 20px;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.signin-card__input--sms-code input {
+  padding-left: 2.5rem;
+}
+
+.signin-card__input--sms-code label {
+  opacity: 0;
+  visibility: hidden;
+  transition: none;
+}
+
+.signin-card__input--sms-code input:focus + label,
+.signin-card__input--sms-code input:not(:placeholder-shown) + label {
+  opacity: 1;
+  visibility: visible;
+}
+
+#phone-number-form {
+  margin-top: 1rem;
+}
